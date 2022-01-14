@@ -38,7 +38,8 @@ app.use(errorController.get404)
 
 mongoose
 .connect(
-    'mongodb+srv://root:1234@cluster0.zgsem.mongodb.net/shop?retryWrites=true&w=majority'
+   // 'mongodb+srv://root:1234@cluster0.zgsem.mongodb.net/shop?retryWrites=true&w=majority'
+   'mongodb+srv://root:1234@cluster0.zgsem.mongodb.net/shop?retryWrites=true&w=majority'
 )
 .then(result => {
     User.findOne().then(user => {
@@ -53,7 +54,7 @@ mongoose
             user.save();
         }
     })
-    app.listen(3000);
+    app.listen(process.env.PORT || 3000);
 })
 .catch(err => {
     console.log(err);
